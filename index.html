@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap, My CSS  -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- My Script, Bootstrap Scripts-->
+    <script defer src="scripts.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+
+    <title>Quiz App</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <nav class="navbar navbar-expand-lg navigation-bar bar">
+                    <div class="container-fluid">
+                        <a class="navbar-brand fw-bold brand" href="#">QA</a>
+                        <button class="navbar-toggler navbar-button" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                      </button>
+                        <div class="collapse navbar-collapse justify-content-start" id="navbarNav">
+                            <ul class="navbar-nav">
+                                <li class="nav-item fw-bold">
+                                    <a class="nav-link navbar-item" id="navbar-about" aria-current="page" href="#">About</a>
+                                </li>
+                                <li class="nav-item fw-bold">
+                                    <a class="nav-link navbar-item" id="navbar-html" href="#">HTML</a>
+                                </li>
+                                <li class="nav-item fw-bold">
+                                    <a class="nav-link navbar-item" href="#">CSS</a>
+                                </li>
+                                <li class="nav-item fw-bold">
+                                    <a class="nav-link navbar-item" href="#">JAVASCRIPT</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+
+        <div class="row home" id="home">
+            <h1>The best quiz website!</h1>
+        </div>
+
+        <div class="row hide" id="about-text">
+            <div class="col-12">
+                <div class="about">
+                    <h2>Want to test your knowledge?</h2>
+                    <h3>Try our special quizes and test your knowledge!</h3>
+                    <h3>It doesn't take long and you'll find out your level.</h3>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="row hide" id="html-quiz">
+            <div class="col-12">
+                <div class="container quiz">
+                    <div class="row">
+                        <div class="col-12">
+                            <h5 class="question-no" id="question-count">Question: 1/20</h5>
+                        </div>
+                    </div>
+                    <div class="row  question">
+                        <div class="col-12">
+                            <h4 id="question_text"></h4>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-md-6 text-left content">
+                            <button class="answer" id="answer_1"></button>
+                        </div>
+                        <div class="col-12 col-md-6 text-left content">
+                            <button class="answer" id="answer_2"></button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-md-6 text-left content">
+                            <button class="answer" id="answer_3"></button>
+                        </div>
+                        <div class="col-12 col-md-6 text-left content">
+                            <button class="answer" id="answer_4"></button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 next">
+                            <button class="btn_next" id="button_next">Next</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+</body>
+
+</html>

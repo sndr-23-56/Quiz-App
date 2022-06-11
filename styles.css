@@ -1,0 +1,152 @@
+body {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #fdf6f6;
+    /* background-color: #FFEDED; */
+}
+
+h1 {
+    font-weight: bold;
+}
+
+h2 {
+    font-weight: bold;
+    margin-bottom: 1em;
+}
+
+.navigation-bar {
+    margin-bottom: 1em;
+}
+
+.brand {
+    color: #685454;
+}
+
+.bar {
+    background-color: #FFEDED;
+    border: 6px solid #FFCCD2;
+    /* #FFCCD2 */
+    border-radius: 7px;
+}
+
+.navbar-item {
+    padding-left: 1em;
+}
+
+.navbar-item:hover {
+    background-color: #FFCCD2;
+    color: white;
+    border: 1px solid #FFCCD2;
+    border-radius: 7px;
+}
+
+.navbar-button {
+    color: #FFCCD2;
+}
+
+.home {
+    /* background-color: #FFEDED; */
+    color: rgb(79, 79, 79);
+    margin: 4em 0em;
+}
+
+.about {
+    background-color: #FFEDED;
+    border: 6px solid #FFCCD2;
+    border-radius: 7px;
+    color: rgb(79, 79, 79);
+    padding: 2em 1em;
+    margin: 4em 0em;
+    text-align: left;
+}
+
+.quiz {
+    border: 6px solid #FFCCD2;
+    /* #FFCCD2 */
+    border-radius: 7px;
+    background-color: #FFCCD2;
+    margin: 3em auto;
+    /* 1em */
+}
+
+.question-no {
+    color: rgb(79, 79, 79);
+    font-weight: bold;
+    text-align: right;
+    margin: 0.5em 0.1em 0.3em;
+}
+
+.question {
+    background-color: #685454;
+    /* #cb6e39 */
+    border: solid #FFCCD2;
+    /* #cb6e39; */
+    border-radius: 6px;
+    color: white;
+    margin: 0.6em 0.1em 2em;
+    padding: 1.8em 0.9em;
+    font-weight: bold;
+}
+
+#question_text {
+    font-weight: bold;
+}
+
+.answer {
+    background-color: #FFEDED;
+    border: 2px solid #eaa67f;
+    border-radius: 6px;
+    color: #674242;
+    font-weight: bold;
+    margin: 0.6em;
+    min-height: 60px;
+    text-align: left;
+    padding-left: 1.7em;
+    width: 96%;
+    /* border: 3px solid black; */
+}
+
+#answer_1:hover,
+#answer_2:hover,
+#answer_3:hover,
+#answer_4:hover {
+    background-color: #F5FEC0;
+}
+
+.selected-answer {
+    background-color: #F5FEC0;
+}
+
+.content {
+    background-color: #FFCCD2;
+    padding: 3px;
+}
+
+.btn_next {
+    background-color: #EA8A8A;
+    /* deschis #eb9b6c */
+    border: 2px solid #cb6e39;
+    border-radius: 7px;
+    color: white;
+    font-weight: bold;
+    margin: 2em auto 1.5em;
+    max-width: 180px;
+    padding: 0.3em;
+    width: 30%;
+    text-align: center;
+}
+
+.btn_next:hover {
+    background-color: #685454;
+    /* #cb6e39; */
+}
+
+.next {
+    text-align: center;
+}
+
+.hide {
+    display: none;
+}
