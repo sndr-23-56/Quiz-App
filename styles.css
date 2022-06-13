@@ -65,7 +65,7 @@ h2 {
     text-align: left;
 }
 
-.quiz-start {
+.quiz-start-end {
     background-color: #FFEDED;
     border: 6px solid #FFCCD2;
     border-radius: 7px;
@@ -73,6 +73,12 @@ h2 {
     padding: 2em 1em;
     margin: 2em 2em;
     /* max-width: 70em; */
+    text-align: center;
+}
+
+.right-questions {
+    color: rgb(79, 79, 79);
+    font-weight: bold;
     text-align: center;
 }
 

@@ -33,8 +33,24 @@ aboutLink.addEventListener("click", () => {
     home.classList.remove("hide");
 })
 
+// quiz end screen
+const quiz_end_box = document.getElementById("quiz-end-box");
+
+
 // display html quiz on click of navbar link
 htmlLink.addEventListener("click", () => {
+    // check if a quiz is currently solved == the quiz div doesn't have the hide class
+    // if (!htmlQuiz.classList.contains("hide")) {
+    //     quiz_start_message.innerText = "Your quiz progress will be lost if you continue.";
+    //     button_start.innerText = "Continue";
+    //     quiz_start_div.classList.remove("hide");
+    // } else {
+    //     aboutText.classList.add("hide");
+    //     home.classList.add("hide");
+    //     htmlQuiz.classList.add("hide");
+    //     quiz_start_message.innerText = "Ready to start your HTML quiz?";
+    //     quiz_start_div.classList.remove("hide");
+    // }
     aboutText.classList.add("hide");
     home.classList.add("hide");
     htmlQuiz.classList.add("hide");
@@ -235,8 +251,12 @@ function changeQuestion() {
             }
 
         } else {
-            // end of quiz + hide quiz, display results
-            alert("enddddddddddddddd " + right_answers);
+            // end of quiz + hide quiz, display results, update current question
+            // alert("enddddddddddddddd " + right_answers);
+            htmlQuiz.classList.add("hide");
+            quiz_end_box.classList.remove("hide");
+            currentQuestionIndex = 0;
+
         }
 
 
