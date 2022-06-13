@@ -23,10 +23,10 @@
 </head>
 
 <body>
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                <nav class="navbar navbar-expand-lg navigation-bar bar">
+                <nav class="navbar navbar-expand-lg navigation-bar">
                     <div class="container-fluid">
                         <a class="navbar-brand fw-bold brand" href="#">QA</a>
                         <button class="navbar-toggler navbar-button" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -53,7 +53,8 @@
             </div>
         </div>
 
-        <div class="row home" id="home">
+
+        <div class="row home hide" id="home">
             <h1>The best quiz website!</h1>
         </div>
 
@@ -63,6 +64,16 @@
                     <h2>Want to test your knowledge in HTML, CSS and more?</h2>
                     <h3>Try our special quizes and test your knowledge!</h3>
                     <h3>It doesn't take long and you'll find out your level.</h3>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <div class="quiz-start hide" id="quiz-start-box">
+                    <h2 id="quiz-start-message">Ready to start your quiz?</h2>
+                    <button class="btn_next" id="button_start">Start</button>
                 </div>
 
             </div>

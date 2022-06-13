@@ -7,6 +7,11 @@ body {
     /* background-color: #FFEDED; */
 }
 
+.container-fluid {
+    padding-left: 0px;
+    padding-right: 0px
+}
+
 h1 {
     font-weight: bold;
 }
@@ -16,19 +21,17 @@ h2 {
     margin-bottom: 1em;
 }
 
-.navigation-bar {
-    margin-bottom: 1em;
-}
-
 .brand {
     color: #685454;
+    margin: auto 1em;
 }
 
-.bar {
+.navigation-bar {
     background-color: #FFEDED;
     border: 6px solid #FFCCD2;
     /* #FFCCD2 */
     border-radius: 7px;
+    margin: 0em 0em 1em;
 }
 
 .navbar-item {
@@ -49,7 +52,7 @@ h2 {
 .home {
     /* background-color: #FFEDED; */
     color: rgb(79, 79, 79);
-    margin: 4em 0em;
+    margin: 4em 2.5em;
 }
 
 .about {
@@ -58,8 +61,19 @@ h2 {
     border-radius: 7px;
     color: rgb(79, 79, 79);
     padding: 2em 1em;
-    margin: 4em 0em;
+    margin: 4em 2.5em;
     text-align: left;
+}
+
+.quiz-start {
+    background-color: #FFEDED;
+    border: 6px solid #FFCCD2;
+    border-radius: 7px;
+    color: rgb(79, 79, 79);
+    padding: 2em 1em;
+    margin: 2em 2em;
+    /* max-width: 70em; */
+    text-align: center;
 }
 
 .quiz {

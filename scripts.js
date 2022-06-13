@@ -6,6 +6,20 @@ const button_3 = document.getElementById("answer_3");
 const button_4 = document.getElementById("answer_4");
 const question_no = document.getElementById("question-count");
 const home = document.getElementById("home");
+let right_answers = 0;
+
+// start quiz
+const button_start = document.getElementById("button_start");
+const quiz_start_div = document.getElementById("quiz-start-box");
+const quiz_start_message = document.getElementById("quiz-start-message");
+
+// get start button to display quiz ----MODIFY
+button_start.addEventListener("click", () => {
+    quiz_start_div.classList.add("hide");
+    htmlQuiz.classList.remove("hide");
+    right_answers = 0;
+    startQuiz();
+})
 
 // links from the bootstrap navbar which display: about section and quizes
 const aboutLink = document.getElementById("navbar-about");
@@ -21,9 +35,11 @@ aboutLink.addEventListener("click", () => {
 
 // display html quiz on click of navbar link
 htmlLink.addEventListener("click", () => {
-    htmlQuiz.classList.remove("hide");
     aboutText.classList.add("hide");
     home.classList.add("hide");
+    htmlQuiz.classList.add("hide");
+    quiz_start_message.innerText = "Ready to start your HTML quiz?";
+    quiz_start_div.classList.remove("hide");
 })
 
 // change button color on selection (click)
@@ -50,18 +66,34 @@ function copyJsonData() {
             // copy data from JSON into local variable
             questions = JSON.parse(JSON.stringify(data));
 
-            question.innerText = questions[0].question;
-            button_1.innerText = questions[0].answers[0];
-            button_2.innerText = questions[0].answers[1];
-            button_3.innerText = questions[0].answers[2];
-            button_4.innerText = questions[0].answers[3];
+            startQuiz();
 
-            // set question count
-            question_no.innerText = "Question:  " + (currentQuestionIndex + 1) + "/" + questions.length;
+            // question.innerText = questions[0].question;
+            // button_1.innerText = questions[0].answers[0];
+            // button_2.innerText = questions[0].answers[1];
+            // button_3.innerText = questions[0].answers[2];
+            // button_4.innerText = questions[0].answers[3];
+
+            // // set question count
+            // currentQuestionIndex = 0;
+            // question_no.innerText = "Question:  " + (currentQuestionIndex + 1) + "/" + questions.length;
         })
         .catch((error) => {
             console.log(error);
         })
+}
+
+
+function startQuiz() {
+    question.innerText = questions[0].question;
+    button_1.innerText = questions[0].answers[0];
+    button_2.innerText = questions[0].answers[1];
+    button_3.innerText = questions[0].answers[2];
+    button_4.innerText = questions[0].answers[3];
+
+    // set question count
+    currentQuestionIndex = 0;
+    question_no.innerText = "Question:  " + (currentQuestionIndex + 1) + "/" + questions.length;
 }
 
 
@@ -144,29 +176,34 @@ function changeQuestion() {
 
         // verify if the correct answer is the one selected and count the right answers
         console.log("RIGHT ANSWER: " + questions[currentQuestionIndex].correct_answer.toString());
+        // match correct answer with the button id number, and verify if it is selected by user
         switch (questions[currentQuestionIndex].correct_answer.toString()) {
             // the number of the answer is at the end of the id
             case button_1.id.substring(7):
                 if (button_1.classList.contains("selected-answer")) {
-                    // count answer as RIGHT
+                    // count answer as RIGHT 
+                    right_answers++;
                     // console.log("ANSWER GIVEN: " + button_1.id.substring(7));
                 }
                 break;
             case button_2.id.substring(7):
                 if (button_2.classList.contains("selected-answer")) {
                     // count answer as RIGHT
+                    right_answers++;
                     // console.log("ANSWER GIVEN: " + button_2.id.substring(7));
                 }
                 break;
             case button_3.id.substring(7):
                 if (button_3.classList.contains("selected-answer")) {
                     // count answer as RIGHT
+                    right_answers++;
                     // console.log("ANSWER GIVEN: " + button_3.id.substring(7));
                 }
                 break;
             case button_4.id.substring(7):
                 if (button_4.classList.contains("selected-answer")) {
                     // count answer as RIGHT
+                    right_answers++;
                     // console.log("ANSWER GIVEN: " + button_4.id.substring(7));
                 }
                 break;
@@ -199,7 +236,7 @@ function changeQuestion() {
 
         } else {
             // end of quiz + hide quiz, display results
-            alert("enddddddddddddddd");
+            alert("enddddddddddddddd " + right_answers);
         }
 
 
