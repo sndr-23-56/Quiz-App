@@ -6,7 +6,13 @@ const button_3 = document.getElementById("answer_3");
 const button_4 = document.getElementById("answer_4");
 const question_no = document.getElementById("question-count");
 const home = document.getElementById("home");
+const right_answers_text = document.getElementById("right-answers");
 let right_answers = 0;
+
+// warning box
+const warning_box = document.getElementById("warning-box");
+const button_abandon = document.getElementById("button-abandon");
+const button_continue = document.getElementById("button-continue");
 
 // start quiz
 const button_start = document.getElementById("button_start");
@@ -16,6 +22,7 @@ const quiz_start_message = document.getElementById("quiz-start-message");
 // get start button to display quiz ----MODIFY
 button_start.addEventListener("click", () => {
     quiz_start_div.classList.add("hide");
+    button_next.innerText = "Next";
     htmlQuiz.classList.remove("hide");
     right_answers = 0;
     startQuiz();
@@ -51,12 +58,51 @@ htmlLink.addEventListener("click", () => {
     //     quiz_start_message.innerText = "Ready to start your HTML quiz?";
     //     quiz_start_div.classList.remove("hide");
     // }
+
+    // if the quiz started and the HTML--button/any other is pressed
+    if (!htmlQuiz.classList.contains("hide")) {
+        console.log("QUIZ ALREADY STARTED");
+        // show --progress  will be lost--- window
+        warning_box.classList.remove("hide");
+        htmlQuiz.classList.add("hide");
+        // if click continue, progress is erased
+
+        // if click not continue --- this window dissapears and quiz is seen again
+        button_abandon.addEventListener("click", () => {
+            htmlQuiz.classList.remove("hide");
+            warning_box.classList.add("hide");
+        })
+
+        // abandon and start the quiz again
+        button_continue.addEventListener("click", () => {
+            warning_box.classList.add("hide");
+            clearScreen();
+            quiz_end_box.classList.add("hide");
+            quiz_start_message.innerText = "Ready to start your HTML quiz?";
+            quiz_start_div.classList.remove("hide");
+        })
+
+    } else { // if the quiz hasn't started, go to start quiz box
+        clearScreen();
+        quiz_end_box.classList.add("hide");
+        quiz_start_message.innerText = "Ready to start your HTML quiz?";
+        quiz_start_div.classList.remove("hide");
+    }
+
+    // aboutText.classList.add("hide");
+    // home.classList.add("hide");
+    // htmlQuiz.classList.add("hide");
+    // quiz_end_box.classList.add("hide");
+    // quiz_start_message.innerText = "Ready to start your HTML quiz?";
+    // quiz_start_div.classList.remove("hide");
+})
+
+function clearScreen() {
     aboutText.classList.add("hide");
     home.classList.add("hide");
     htmlQuiz.classList.add("hide");
-    quiz_start_message.innerText = "Ready to start your HTML quiz?";
-    quiz_start_div.classList.remove("hide");
-})
+}
+
 
 // change button color on selection (click)
 button_1.addEventListener("click", changeColorOnSelection);
@@ -163,7 +209,12 @@ function changeColorOnSelection(event) {
     console.log(event.target.id);
 }
 
-
+function deselectAllAnswers() {
+    button_1.classList.remove("selected-answer");
+    button_2.classList.remove("selected-answer");
+    button_3.classList.remove("selected-answer");
+    button_4.classList.remove("selected-answer");
+}
 
 function changeQuestion() {
     // console.log(questions.length);
@@ -237,10 +288,7 @@ function changeQuestion() {
             button_4.innerText = questions[currentQuestionIndex].answers[3];
 
             // make all buttons unselected by removing selection class
-            button_1.classList.remove("selected-answer");
-            button_2.classList.remove("selected-answer");
-            button_3.classList.remove("selected-answer");
-            button_4.classList.remove("selected-answer");
+            deselectAllAnswers();
 
             // change question count
             question_no.innerText = "Question:  " + (currentQuestionIndex + 1) + "/" + questions.length;
@@ -253,13 +301,17 @@ function changeQuestion() {
         } else {
             // end of quiz + hide quiz, display results, update current question
             // alert("enddddddddddddddd " + right_answers);
+            right_answers_text.innerText = right_answers + "/" + questions.length;
             htmlQuiz.classList.add("hide");
             quiz_end_box.classList.remove("hide");
             currentQuestionIndex = 0;
 
+            // deselect all answers for new quiz
+            deselectAllAnswers();
+
         }
 
-
-
     }
+
+
 }
