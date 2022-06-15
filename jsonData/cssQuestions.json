@@ -1,0 +1,16 @@
+[{
+        "question": "What does HTML stand for???",
+        "answers": ["Hypertext Markup Language", "Hyperlinks Markup Language", "three", "four"],
+        "correct_answer": 1
+    },
+    {
+        "question": "What does CSS stand for?",
+        "answers": ["CSS", "four four fourv four four four four four four four fourfourv vfourfourfo urfourv", "Cascading Style Sheets", "Hyperlinks Markup Language"],
+        "correct_answer": 3
+    },
+    {
+        "question": "What is the correct CSS syntax for making all the <span> elements bold?",
+        "answers": ["span {text-size: bold}", "span {font-weight: bold}", "<span style='font-size: bold'>", "<span style='text-size: bold'>"],
+        "correct_answer": 3
+    }
+]

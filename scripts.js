@@ -82,11 +82,14 @@ htmlLink.addEventListener("click", () => {
             quiz_start_div.classList.remove("hide");
         })
 
-    } else { // if the quiz hasn't started, go to start quiz box
-        clearScreen();
-        quiz_end_box.classList.add("hide");
-        quiz_start_message.innerText = "Ready to start your HTML quiz?";
-        quiz_start_div.classList.remove("hide");
+    } else { // if the quiz hasn't started and the --progress will be lost is not visible--, go to start quiz box
+        if (warning_box.classList.contains("hide")) {
+            clearScreen();
+            quiz_end_box.classList.add("hide");
+            quiz_start_message.innerText = "Ready to start your HTML quiz?";
+            quiz_start_div.classList.remove("hide");
+        }
+
     }
 
     // aboutText.classList.add("hide");
@@ -118,11 +121,11 @@ let questions;
 let currentQuestionIndex = 0;
 
 // start the quiz with the first question
-copyJsonData();
+copyHTMLJsonData();
 
-function copyJsonData() {
+function copyHTMLJsonData() {
     // copy data from JSON and populate with the first question
-    fetch(url)
+    fetch("questions.json") // fetch(url) ---- for json file on the same level
         .then(res => res.json())
         .then(data => {
             // copy data from JSON into local variable
@@ -145,6 +148,22 @@ function copyJsonData() {
         })
 }
 
+function copyCSSJsonData() {
+    fetch("jsonData/cssQuestions.json") // fetch(url) ---- for json file on the same level
+        .then(res => res.json())
+        .then(data => {
+            // copy data from JSON into local variable
+            const qqq = JSON.parse(JSON.stringify(data));
+
+            console.log("CSS JSON +++++++++++++ " + qqq[0].question);
+
+        })
+        .catch((error) => {
+            console.log(error);
+        })
+}
+
+copyCSSJsonData();
 
 function startQuiz() {
     question.innerText = questions[0].question;
