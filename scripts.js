@@ -125,7 +125,7 @@ copyHTMLJsonData();
 
 function copyHTMLJsonData() {
     // copy data from JSON and populate with the first question
-    fetch("questions.json") // fetch(url) ---- for json file on the same level
+    fetch("jsonData/HTMLquestions.json") // fetch(url) ---- for json file on the same level
         .then(res => res.json())
         .then(data => {
             // copy data from JSON into local variable
