@@ -7,6 +7,7 @@ const button_4 = document.getElementById("answer_4");
 const question_no = document.getElementById("question-count");
 const home = document.getElementById("home");
 const right_answers_text = document.getElementById("right-answers");
+const right_answers_message = document.getElementById("end-quiz-message");
 let right_answers = 0;
 
 // warning box
@@ -321,6 +322,13 @@ function changeQuestion() {
             // end of quiz + hide quiz, display results, update current question
             // alert("enddddddddddddddd " + right_answers);
             right_answers_text.innerText = right_answers + "/" + questions.length;
+            if (right_answers < questions.length / 2) {
+                right_answers_message.innerText = "You completed the quiz! Looks like you had some difficulties with it. Maybe try again.";
+            } else if (right_answers >= questions.length / 2 && right_answers < questions.length) {
+                right_answers_message.innerText = "You completed the quiz! You did a great job!"
+            } else if (right_answers == questions.length) {
+                right_answers_message.innerText = "You completed the quiz! You did an awesome job!"
+            }
             htmlQuiz.classList.add("hide");
             quiz_end_box.classList.remove("hide");
             currentQuestionIndex = 0;
