@@ -180,6 +180,60 @@ h2 {
     /* #cb6e39; */
 }
 
+.btn_end_quiz {
+    background-color: #EA8A8A;
+    /* deschis #eb9b6c */
+    border: 2px solid #cb6e39;
+    border-radius: 7px;
+    color: white;
+    font-weight: bold;
+    margin: 2em auto 1.5em;
+    min-width: 80px;
+    padding: 0.3em;
+    width: 20%;
+    text-align: center;
+}
+
+.btn_end_quiz:hover {
+    background-color: #685454;
+}
+
+
+/* end quiz report*/
+
+.questions-answers {
+    text-align: left;
+}
+
+.report {
+    margin: auto 3em;
+    padding: 0.6em;
+}
+
+.report-question {
+    margin: 1.5em 2em 0.5em;
+}
+
+.green {
+    background-color: rgb(148, 253, 148);
+    border: 1px solid rgb(148, 253, 148);
+    border-radius: 7px;
+}
+
+.red {
+    background-color: rgb(255, 127, 127);
+    border: 1px solid rgb(255, 127, 127);
+    border-radius: 7px;
+}
+
+hr {
+    background-color: #685454;
+    color: #685454;
+    height: 5px;
+    border: 1px solid #685454;
+    border-radius: 7px;
+}
+
 .next {
     text-align: center;
 }

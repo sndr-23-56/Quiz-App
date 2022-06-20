@@ -9,6 +9,7 @@ const home = document.getElementById("home");
 const right_answers_text = document.getElementById("right-answers");
 const right_answers_message = document.getElementById("end-quiz-message");
 let right_answers = 0;
+let user_answers = [];
 
 // warning box
 const warning_box = document.getElementById("warning-box");
@@ -248,15 +249,23 @@ function changeQuestion() {
         switch (true) {
             case button_1.classList.contains("selected-answer"):
                 console.log("ANSWER GIVEN: " + button_1.id.substring(7));
+                // record user answer
+                user_answers.push(1);
                 break;
             case button_2.classList.contains("selected-answer"):
                 console.log("ANSWER GIVEN: " + button_2.id.substring(7));
+                // record user answer
+                user_answers.push(2);
                 break;
             case button_3.classList.contains("selected-answer"):
                 console.log("ANSWER GIVEN: " + button_3.id.substring(7));
+                // record user answer
+                user_answers.push(3);
                 break;
             case button_4.classList.contains("selected-answer"):
                 console.log("ANSWER GIVEN: " + button_4.id.substring(7));
+                // record user answer
+                user_answers.push(4);
                 break;
         }
         // END DEBUG
@@ -339,6 +348,92 @@ function changeQuestion() {
         }
 
     }
+}
+
+// show Q&A box with answers
+const questions_and_answers_box = document.getElementById("quiz-answers-box");
+// questions_and_answers_box.classList.remove("hide");
+
+// button for displaying q&a
+const display_answers = document.getElementById("button_answers");
+display_answers.addEventListener("click", displayAnswers);
 
 
+// display questions and answers
+function displayAnswers() {
+    console.log(user_answers);
+    // hide end quiz box
+    quiz_end_box.classList.add("hide");
+    questions_and_answers_box.classList.remove("hide");
+
+    for (let i = 0; i < questions.length; i++) {
+        $(".questions-answers").append("<h3 class=\"report-question\" style=\"font-weight: bold;\">" + (i + 1) + ". " + questions[i].question + "</h3>");
+        // $(".questions-answers").append(
+        //     "<p class=\"report\">" + questions[i].answers[0] + " </p> " +
+        //     "<p class=\"report\">" + questions[i].answers[1] + " </p> " +
+        //     "<p class=\"report\">" + questions[i].answers[2] + " </p> " +
+        //     "<p class=\"report\">" + questions[i].answers[3] + " </p> ");
+
+        // append each answer and if it is the correct one, turn it green
+        // if the user choosed the wrong one, make it red
+        if (questions[i].correct_answer == 1) {
+            // if the answer is the right one, make it green
+            $(".questions-answers").append(
+                "<p class=\"report green\">" + questions[i].answers[0] + " </p> ");
+            console.log("XXXXXXXXXXXXXXXXXXX" + 1);
+        } else {
+            // if the answer is not right, but the user choose it, mak it red
+            if (user_answers[i] == 1) {
+                $(".questions-answers").append(
+                    "<p class=\"report red\">" + questions[i].answers[0] + " </p> ");
+            } else {
+                // if the answer is not right and the user did not choose it, display it plain
+                $(".questions-answers").append(
+                    "<p class=\"report\">" + questions[i].answers[0] + " </p> ");
+            }
+        }
+        if (questions[i].correct_answer == 2) {
+            $(".questions-answers").append(
+                "<p class=\"report green\">" + questions[i].answers[1] + " </p> ");
+            console.log("XXXXXXXXXXXXXXXXXXX" + 2);
+        } else {
+            if (user_answers[i] == 2) {
+                $(".questions-answers").append(
+                    "<p class=\"report red\">" + questions[i].answers[1] + " </p> ");
+            } else {
+                $(".questions-answers").append(
+                    "<p class=\"report\">" + questions[i].answers[1] + " </p> ");
+            }
+        }
+        if (questions[i].correct_answer == 3) {
+            $(".questions-answers").append(
+                "<p class=\"report green\">" + questions[i].answers[2] + " </p> ");
+            console.log("XXXXXXXXXXXXXXXXXXX" + 3);
+        } else {
+            if (user_answers[i] == 3) {
+                $(".questions-answers").append(
+                    "<p class=\"report red\">" + questions[i].answers[2] + " </p> ");
+            } else {
+                $(".questions-answers").append(
+                    "<p class=\"report\">" + questions[i].answers[2] + " </p> ");
+            }
+        }
+        if (questions[i].correct_answer == 4) {
+            $(".questions-answers").append(
+                "<p class=\"report green\">" + questions[i].answers[3] + " </p> ");
+            console.log("XXXXXXXXXXXXXXXXXXX" + 4);
+        } else {
+            if (user_answers[i] == 4) {
+                $(".questions-answers").append(
+                    "<p class=\"report red\">" + questions[i].answers[3] + " </p> ");
+            } else {
+                $(".questions-answers").append(
+                    "<p class=\"report\">" + questions[i].answers[3] + " </p> ");
+            }
+
+        }
+
+        $(".questions-answers").append("<hr>");
+
+    }
 }

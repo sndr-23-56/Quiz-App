@@ -9,8 +9,8 @@
         "correct_answer": 3
     },
     {
-        "question": "What is the correct CSS syntax for making all the <span> elements bold?",
-        "answers": ["span {text-size: bold}", "span {font-weight: bold}", "<span style='font-size: bold'>", "<span style='text-size: bold'>"],
+        "question": "What is 2*8?",
+        "answers": ["166", "12", "16", "32"],
         "correct_answer": 3
     },
     {

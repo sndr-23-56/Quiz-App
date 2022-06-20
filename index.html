@@ -10,9 +10,11 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <link rel="stylesheet" href="StylesCSS/styles.css">
 
-    <!-- My Script, Bootstrap Scripts-->
+    <!-- My Script, Bootstrap Scripts, jQuery CDN-->
     <script defer src="scripts.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -86,7 +88,28 @@
                     <h1 class="right-questions" id="right-answers">2/3</h1>
                     <br>
                     <h2 id="end-quiz-message">Congrats! You completed the quiz!</h2>
+                    <div class="row">
+                        <div class="col-12">
+                            <button class="btn_end_quiz" id="button_answers">Show Answers</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <button class="btn_end_quiz" id="button_restart">Restart</button>
+                        </div>
+
+                    </div>
                 </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <div class="quiz-start-end hide" id="quiz-answers-box">
+                    <h2>Here are your quiz answers!</h2>
+                    <div class="questions-answers"></div>
+                </div>
+
             </div>
         </div>
 
