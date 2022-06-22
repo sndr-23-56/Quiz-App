@@ -106,6 +106,7 @@ function clearScreen() {
     aboutText.classList.add("hide");
     home.classList.add("hide");
     htmlQuiz.classList.add("hide");
+    questions_and_answers_box.classList.add("hide");
 }
 
 
@@ -354,10 +355,27 @@ function changeQuestion() {
 const questions_and_answers_box = document.getElementById("quiz-answers-box");
 // questions_and_answers_box.classList.remove("hide");
 
+// restart after quiz end box appears
+const restart_button = document.getElementById("button_restart");
+restart_button.addEventListener("click", restartQuiz);
+
+// hides quiz end box and displays the begin quiz box
+// restarts form end quiz and report boxes
+function restartQuiz() {
+    quiz_end_box.classList.add("hide");
+    quiz_start_div.classList.remove("hide");
+    questions_and_answers_box.classList.add("hide");
+    aboutText.classList.add("hide");
+    home.classList.add("hide");
+}
+
 // button for displaying q&a
 const display_answers = document.getElementById("button_answers");
 display_answers.addEventListener("click", displayAnswers);
 
+//button for restarting quiz from report box
+const restart_from_report_button = document.getElementById("button-restart-from-report");
+restart_from_report_button.addEventListener("click", restartQuiz);
 
 // display questions and answers
 function displayAnswers() {
@@ -367,7 +385,7 @@ function displayAnswers() {
     questions_and_answers_box.classList.remove("hide");
 
     for (let i = 0; i < questions.length; i++) {
-        $(".questions-answers").append("<h3 class=\"report-question\" style=\"font-weight: bold;\">" + (i + 1) + ". " + questions[i].question + "</h3>");
+        $(".questions-answers").append("<h3 class=\"report-question\">" + (i + 1) + ". " + questions[i].question + "</h3>");
         // $(".questions-answers").append(
         //     "<p class=\"report\">" + questions[i].answers[0] + " </p> " +
         //     "<p class=\"report\">" + questions[i].answers[1] + " </p> " +
@@ -432,8 +450,10 @@ function displayAnswers() {
             }
 
         }
+        if (i < questions.length - 1) {
+            $(".questions-answers").append("<hr>");
+        }
 
-        $(".questions-answers").append("<hr>");
 
     }
 }

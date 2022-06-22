@@ -206,11 +206,12 @@ h2 {
 }
 
 .report {
-    margin: auto 3em;
+    margin: 0.7em 3em;
     padding: 0.6em;
 }
 
 .report-question {
+    font-weight: bold;
     margin: 1.5em 2em 0.5em;
 }
 
@@ -227,11 +228,33 @@ h2 {
 }
 
 hr {
-    background-color: #685454;
-    color: #685454;
+    background-color: #FFCCD2;
+    color: #FFCCD2;
     height: 5px;
-    border: 1px solid #685454;
+    border: 1px solid #FFCCD2;
     border-radius: 7px;
+    width: 92%;
+    margin: 2.5em auto;
+    opacity: 100%;
+}
+
+.report-restart-button {
+    margin: 3em auto;
+    background-color: #EA8A8A;
+    /* deschis #eb9b6c */
+    border: 2px solid #cb6e39;
+    border-radius: 7px;
+    color: white;
+    font-weight: bold;
+    min-height: 35px;
+    min-width: 80px;
+    padding: 1em auto;
+    width: 20%;
+    text-align: center;
+}
+
+.report-restart-button:hover {
+    background-color: #685454;
 }
 
 .next {
