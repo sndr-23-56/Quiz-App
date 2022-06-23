@@ -1,16 +1,21 @@
 [{
-        "question": "What does HTML stand for???",
-        "answers": ["Hypertext Markup Language", "Hyperlinks Markup Language", "three", "four"],
+        "question": "What is 1+1?",
+        "answers": ["2", "4", "44", "444"],
         "correct_answer": 1
     },
     {
-        "question": "What does CSS stand for?",
-        "answers": ["CSS", "four four fourv four four four four four four four fourfourv vfourfourfo urfourv", "Cascading Style Sheets", "Hyperlinks Markup Language"],
+        "question": "What is 2+2?",
+        "answers": ["22", "4", "7", "77"],
+        "correct_answer": 2
+    },
+    {
+        "question": "What is 3+3?",
+        "answers": ["1", "0", "6", "66"],
         "correct_answer": 3
     },
     {
-        "question": "What is the correct CSS syntax for making all the <span> elements bold?",
-        "answers": ["span {text-size: bold}", "span {font-weight: bold}", "<span style='font-size: bold'>", "<span style='text-size: bold'>"],
-        "correct_answer": 3
+        "question": "What is 4+4?",
+        "answers": ["333", "3", "33", "8"],
+        "correct_answer": 4
     }
 ]

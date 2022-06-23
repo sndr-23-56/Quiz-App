@@ -24,8 +24,10 @@ const quiz_start_message = document.getElementById("quiz-start-message");
 // get start button to display quiz ----MODIFY
 button_start.addEventListener("click", () => {
     quiz_start_div.classList.add("hide");
+    aboutText.classList.add("hide");
+    home.classList.add("hide");
     button_next.innerText = "Next";
-    htmlQuiz.classList.remove("hide");
+    quizArea.classList.remove("hide");
     right_answers = 0;
     startQuiz();
 })
@@ -34,7 +36,9 @@ button_start.addEventListener("click", () => {
 const aboutLink = document.getElementById("navbar-about");
 const aboutText = document.getElementById("about-text");
 const htmlLink = document.getElementById("navbar-html");
-const htmlQuiz = document.getElementById("html-quiz");
+const quizArea = document.getElementById("quiz-area");
+const css_link = document.getElementById("navbar-css");
+
 
 // display home and about text on click on navbar
 aboutLink.addEventListener("click", () => {
@@ -45,33 +49,25 @@ aboutLink.addEventListener("click", () => {
 // quiz end screen
 const quiz_end_box = document.getElementById("quiz-end-box");
 
+// move to css quiz
+css_link.addEventListener("click", () => {
+    questions = css_questions;
+    current_quiz = 2;
+    runQuiz();
+})
 
-// display html quiz on click of navbar link
-htmlLink.addEventListener("click", () => {
-    // check if a quiz is currently solved == the quiz div doesn't have the hide class
-    // if (!htmlQuiz.classList.contains("hide")) {
-    //     quiz_start_message.innerText = "Your quiz progress will be lost if you continue.";
-    //     button_start.innerText = "Continue";
-    //     quiz_start_div.classList.remove("hide");
-    // } else {
-    //     aboutText.classList.add("hide");
-    //     home.classList.add("hide");
-    //     htmlQuiz.classList.add("hide");
-    //     quiz_start_message.innerText = "Ready to start your HTML quiz?";
-    //     quiz_start_div.classList.remove("hide");
-    // }
-
+function runQuiz() {
     // if the quiz started and the HTML--button/any other is pressed
-    if (!htmlQuiz.classList.contains("hide")) {
+    if (!quizArea.classList.contains("hide")) {
         console.log("QUIZ ALREADY STARTED");
         // show --progress  will be lost--- window
         warning_box.classList.remove("hide");
-        htmlQuiz.classList.add("hide");
+        quizArea.classList.add("hide");
         // if click continue, progress is erased
 
         // if click not continue --- this window dissapears and quiz is seen again
         button_abandon.addEventListener("click", () => {
-            htmlQuiz.classList.remove("hide");
+            quizArea.classList.remove("hide");
             warning_box.classList.add("hide");
         })
 
@@ -80,7 +76,7 @@ htmlLink.addEventListener("click", () => {
             warning_box.classList.add("hide");
             clearScreen();
             quiz_end_box.classList.add("hide");
-            quiz_start_message.innerText = "Ready to start your HTML quiz?";
+            personalizeStartQuizMessage();
             quiz_start_div.classList.remove("hide");
         })
 
@@ -88,24 +84,51 @@ htmlLink.addEventListener("click", () => {
         if (warning_box.classList.contains("hide")) {
             clearScreen();
             quiz_end_box.classList.add("hide");
-            quiz_start_message.innerText = "Ready to start your HTML quiz?";
+            personalizeStartQuizMessage();
             quiz_start_div.classList.remove("hide");
         }
 
     }
+}
 
-    // aboutText.classList.add("hide");
-    // home.classList.add("hide");
-    // htmlQuiz.classList.add("hide");
-    // quiz_end_box.classList.add("hide");
-    // quiz_start_message.innerText = "Ready to start your HTML quiz?";
-    // quiz_start_div.classList.remove("hide");
+function personalizeStartQuizMessage() {
+    // 1=html, 2=css
+    switch (current_quiz) {
+        case 1:
+            quiz_start_message.innerText = "Ready to start your HTML quiz?";
+            break;
+        case 2:
+            quiz_start_message.innerText = "Ready to start your CSS quiz?";
+            break;
+        default:
+            quiz_start_message.innerText = "Ready to start your quiz?";
+    }
+}
+
+// display html quiz on click of navbar link
+htmlLink.addEventListener("click", () => {
+    // check if a quiz is currently solved == the quiz div doesn't have the hide class
+    // if (!quizArea.classList.contains("hide")) {
+    //     quiz_start_message.innerText = "Your quiz progress will be lost if you continue.";
+    //     button_start.innerText = "Continue";
+    //     quiz_start_div.classList.remove("hide");
+    // } else {
+    //     aboutText.classList.add("hide");
+    //     home.classList.add("hide");
+    //     quizArea.classList.add("hide");
+    //     quiz_start_message.innerText = "Ready to start your HTML quiz?";
+    //     quiz_start_div.classList.remove("hide");
+    // }
+
+    questions = html_questions;
+    current_quiz = 1;
+    runQuiz();
 })
 
 function clearScreen() {
     aboutText.classList.add("hide");
     home.classList.add("hide");
-    htmlQuiz.classList.add("hide");
+    quizArea.classList.add("hide");
     questions_and_answers_box.classList.add("hide");
 }
 
@@ -123,6 +146,11 @@ button_next.addEventListener("click", changeQuestion);
 let questions;
 let currentQuestionIndex = 0;
 
+// the css and html arrays of question objects
+let css_questions;
+let html_questions;
+let current_quiz = 1; // 1=html, 2=css
+
 // start the quiz with the first question
 copyHTMLJsonData();
 
@@ -132,8 +160,8 @@ function copyHTMLJsonData() {
         .then(res => res.json())
         .then(data => {
             // copy data from JSON into local variable
-            questions = JSON.parse(JSON.stringify(data));
-
+            html_questions = JSON.parse(JSON.stringify(data));
+            questions = html_questions;
             startQuiz();
 
             // question.innerText = questions[0].question;
@@ -156,9 +184,9 @@ function copyCSSJsonData() {
         .then(res => res.json())
         .then(data => {
             // copy data from JSON into local variable
-            const qqq = JSON.parse(JSON.stringify(data));
+            css_questions = JSON.parse(JSON.stringify(data));
 
-            console.log("CSS JSON +++++++++++++ " + qqq[0].question);
+            console.log("CSS JSON +++++++++++++ " + css_questions[0].question);
 
         })
         .catch((error) => {
@@ -339,7 +367,7 @@ function changeQuestion() {
             } else if (right_answers == questions.length) {
                 right_answers_message.innerText = "You completed the quiz! You did an awesome job!"
             }
-            htmlQuiz.classList.add("hide");
+            quizArea.classList.add("hide");
             quiz_end_box.classList.remove("hide");
             currentQuestionIndex = 0;
 
@@ -367,6 +395,12 @@ function restartQuiz() {
     questions_and_answers_box.classList.add("hide");
     aboutText.classList.add("hide");
     home.classList.add("hide");
+
+    // empty user answers array
+    while (user_answers.length >= 1) {
+        user_answers.pop();
+    }
+    // console.log(user_answers);
 }
 
 // button for displaying q&a
