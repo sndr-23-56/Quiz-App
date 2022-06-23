@@ -207,7 +207,9 @@ h2 {
 
 .report {
     margin: 0.7em 3em;
-    padding: 0.6em;
+    padding: 1em;
+    border: 2px solid #FFCCD2;
+    border-radius: 7px;
 }
 
 .report-question {

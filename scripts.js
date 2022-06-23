@@ -38,7 +38,7 @@ const aboutText = document.getElementById("about-text");
 const htmlLink = document.getElementById("navbar-html");
 const quizArea = document.getElementById("quiz-area");
 const css_link = document.getElementById("navbar-css");
-
+const javascriptlink = document.getElementById("navbar-js");
 
 // display home and about text on click on navbar
 aboutLink.addEventListener("click", () => {
@@ -53,6 +53,14 @@ const quiz_end_box = document.getElementById("quiz-end-box");
 css_link.addEventListener("click", () => {
     questions = css_questions;
     current_quiz = 2;
+    runQuiz();
+})
+
+// move to js quiz
+
+javascriptlink.addEventListener("click", () => {
+    questions = javascript_questions;
+    current_quiz = 3;
     runQuiz();
 })
 
@@ -99,6 +107,9 @@ function personalizeStartQuizMessage() {
             break;
         case 2:
             quiz_start_message.innerText = "Ready to start your CSS quiz?";
+            break;
+        case 3:
+            quiz_start_message.innerText = "Ready to start your Javascript quiz?";
             break;
         default:
             quiz_start_message.innerText = "Ready to start your quiz?";
@@ -149,6 +160,7 @@ let currentQuestionIndex = 0;
 // the css and html arrays of question objects
 let css_questions;
 let html_questions;
+let javascript_questions;
 let current_quiz = 1; // 1=html, 2=css
 
 // start the quiz with the first question
@@ -195,6 +207,23 @@ function copyCSSJsonData() {
 }
 
 copyCSSJsonData();
+
+function copyJavascriptJSONData() {
+    fetch("jsonData/javascriptQuestions.json") // fetch(url) ---- for json file on the same level
+        .then(res => res.json())
+        .then(data => {
+            // copy data from JSON into local variable
+            javascript_questions = JSON.parse(JSON.stringify(data));
+
+            console.log("javascript JSON +++++++++++++ " + javascript_questions[0].question);
+
+        })
+        .catch((error) => {
+            console.log(error);
+        })
+}
+
+copyJavascriptJSONData();
 
 function startQuiz() {
     question.innerText = questions[0].question;
@@ -417,6 +446,9 @@ function displayAnswers() {
     // hide end quiz box
     quiz_end_box.classList.add("hide");
     questions_and_answers_box.classList.remove("hide");
+
+    // empty the report div for another use
+    $("#qa").empty();
 
     for (let i = 0; i < questions.length; i++) {
         $(".questions-answers").append("<h3 class=\"report-question\">" + (i + 1) + ". " + questions[i].question + "</h3>");
