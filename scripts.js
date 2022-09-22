@@ -37,7 +37,7 @@ const css_link = document.getElementById("navbar-css");
 const javascriptlink = document.getElementById("navbar-js");
 
 // home and about areas
-const home = document.getElementById("home");
+// const home = document.getElementById("home");
 const aboutText = document.getElementById("about-text");
 
 // quiz end screen
@@ -104,7 +104,7 @@ function copyJavascriptJSONData() {
 button_start.addEventListener("click", () => {
     quiz_start_div.classList.add("hide");
     aboutText.classList.add("hide");
-    home.classList.add("hide");
+    // home.classList.add("hide");
     button_next.innerText = "Next";
     quizArea.classList.remove("hide");
     right_answers = 0;
@@ -114,7 +114,7 @@ button_start.addEventListener("click", () => {
 // display home and about text on click on navbar
 aboutLink.addEventListener("click", () => {
     aboutText.classList.remove("hide");
-    home.classList.remove("hide");
+    // home.classList.remove("hide");
 })
 
 // move to css quiz
@@ -193,7 +193,7 @@ htmlLink.addEventListener("click", () => {
 
 function clearScreen() {
     aboutText.classList.add("hide");
-    home.classList.add("hide");
+    // home.classList.add("hide");
     quizArea.classList.add("hide");
     questions_and_answers_box.classList.add("hide");
 }
@@ -375,7 +375,7 @@ function restartQuiz() {
     quiz_start_div.classList.remove("hide");
     questions_and_answers_box.classList.add("hide");
     aboutText.classList.add("hide");
-    home.classList.add("hide");
+    // home.classList.add("hide");
 
     // empty user answers array
     while (user_answers.length >= 1) {
@@ -473,6 +473,48 @@ function displayAnswers() {
         // after each question which is not the last one, display a separation line
         if (i < questions.length - 1) {
             $(".questions-answers").append("<hr>");
+        }
+    }
+}
+
+
+const welcome_text = document.getElementById("welcome-area-txt");
+// setInterval(changeTextVisibility, 1000);
+
+function changeTextVisibility() {
+    if (welcome_text.classList.contains("visible")) {
+        welcome_text.classList.remove("visible");
+        welcome_text.classList.add("partially-visible");
+    } else if (welcome_text.classList.contains("partially-visible")) {
+        welcome_text.classList.remove("partially-visible");
+        welcome_text.classList.add("hidden");
+    } else if (welcome_text.classList.contains("hidden")) {
+        welcome_text.classList.remove("hidden");
+        welcome_text.classList.add("visible");
+    }
+}
+
+let finalMessage = "Take a quiz now!";
+let message = "";
+let currentMessageIndex = 0;
+// addLetter();
+
+setInterval(addLetter, 300);
+
+function addLetter() {
+    if (message.length === finalMessage.length) {
+        message = "T";
+        currentMessageIndex = 1;
+        // console.log(message);
+        welcome_text.innerText = message + "_";
+    } else if (message.length < finalMessage.length) {
+        message = message + finalMessage[currentMessageIndex];
+        currentMessageIndex++;
+        // console.log(message);
+        if (message.length === finalMessage.length) {
+            welcome_text.innerText = message;
+        } else {
+            welcome_text.innerText = message + "_";
         }
     }
 }

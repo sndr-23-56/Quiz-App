@@ -25,48 +25,82 @@
 </head>
 
 <body>
-    <div class="container">
+    <div style="background-color: #FFCCD2;">
+        <nav class="navbar navbar-expand-lg navigation-bar">
+            <div class="container-fluid">
+                <a class="navbar-brand fw-bold brand" href="#">QA</a>
+                <button class="navbar-toggler navbar-button" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+                <div class="collapse navbar-collapse justify-content-start" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item fw-bold">
+                            <a class="nav-link navbar-item" id="navbar-about" aria-current="page" href="#about-text">About</a>
+                        </li>
+                        <li class="nav-item fw-bold">
+                            <a class="nav-link navbar-item" id="navbar-html" href="#display-area">HTML</a>
+                        </li>
+                        <li class="nav-item fw-bold">
+                            <a class="nav-link navbar-item" id="navbar-css" href="#display-area">CSS</a>
+                        </li>
+                        <li class="nav-item fw-bold">
+                            <a class="nav-link navbar-item" id="navbar-js" href="#display-area">JAVASCRIPT</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="container welcome-area" style="background-color: #FFCCD2;">
+            <div class="row">
+                <div class="col-12 col-lg-6">
+                    <h1 style="color: white; margin-bottom: 1em;">Do you want to test your web development knowledge?</h1>
+                    <h2 style="color: #595959;">Here you can find great quizes that can help you.</h2>
+                    <h2 style="color: #595959;">It only takes a few minutes to find out your level.</h2>
+                </div>
+                <div class="col-12 col-lg-6 animated-text-area">
+                    <h1 class="visible welcome-area-animated-txt" id="welcome-area-txt">Take a quiz now!</h1>
+                </div>
+            </div>
+            <!-- <h1 style="color: white; margin-bottom: 1em;">Do you want to test your web development knowledge?</h1>
+            <h2 style="color: #595959;">Here you can find great quizes that can help you.</h2>
+            <h2 style="color: #595959;">It only takes a few minutes to find out your level.</h2> -->
+
+        </div>
+
+    </div>
+    <div class="container" id="display-area">
         <div class="row">
             <div class="col-12">
-                <nav class="navbar navbar-expand-lg navigation-bar">
-                    <div class="container-fluid">
-                        <a class="navbar-brand fw-bold brand" href="#">QA</a>
-                        <button class="navbar-toggler navbar-button" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                      </button>
-                        <div class="collapse navbar-collapse justify-content-start" id="navbarNav">
-                            <ul class="navbar-nav">
-                                <li class="nav-item fw-bold">
-                                    <a class="nav-link navbar-item" id="navbar-about" aria-current="page" href="#">About</a>
-                                </li>
-                                <li class="nav-item fw-bold">
-                                    <a class="nav-link navbar-item" id="navbar-html" href="#">HTML</a>
-                                </li>
-                                <li class="nav-item fw-bold">
-                                    <a class="nav-link navbar-item" id="navbar-css" href="#">CSS</a>
-                                </li>
-                                <li class="nav-item fw-bold">
-                                    <a class="nav-link navbar-item" id="navbar-js" href="#">JAVASCRIPT</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </nav>
 
             </div>
         </div>
 
 
-        <div class="row home hide" id="home">
+        <!-- <div class="row home hide" id="home">
             <h1>The best quiz website!</h1>
-        </div>
+        </div> -->
 
         <div class="row hide" id="about-text">
             <div class="col-12">
                 <div class="about">
-                    <h2>Want to test your knowledge in HTML, CSS and more?</h2>
-                    <h3>Try our special quizes and test your knowledge!</h3>
-                    <h3>It doesn't take long and you'll find out your level.</h3>
+                    <h2>This is the right place to take quizes about HTML, CSS and more!</h2>
+                    <h3>With a few simple steps you'll know your level.</h3>
+                    <ul>
+                        <li>
+                            <h3>Select and start a quiz.</h3>
+
+                        </li>
+                        <li>
+                            <h3>Read each question carefully and select the right answer.</h3>
+                        </li>
+                        <li>
+                            <h3>At the end you'll get a report on your answers.</h3>
+                        </li>
+                    </ul>
+                    <h2>Have fun!</h2>
+
+                    <!-- <h3>It doesn't take long and you'll find out your level.</h3>
+                    <h3>At the end you can also see the good and wrong answers.</h3> -->
                 </div>
 
             </div>
@@ -76,7 +110,9 @@
             <div class="col-12">
                 <div class="quiz-start-end hide" id="quiz-start-box">
                     <h2 id="quiz-start-message">Ready to start your quiz?</h2>
-                    <button class="btn_next" id="button_start">Start</button>
+                    <a href="#display-area">
+                        <button class="btn_next" id="button_start">Start</button>
+                    </a>
                 </div>
 
             </div>
