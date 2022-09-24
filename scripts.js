@@ -55,6 +55,7 @@ let css_questions;
 let html_questions;
 let javascript_questions;
 let current_quiz = 1; // 1=html, 2=css, 3=js
+let current_quiz_name = "";
 
 // copy all the json data in local arrays of objects
 copyHTMLJsonData();
@@ -121,6 +122,7 @@ aboutLink.addEventListener("click", () => {
 css_link.addEventListener("click", () => {
     questions = css_questions;
     current_quiz = 2;
+    current_quiz_name = "CSS";
     runQuiz();
 })
 
@@ -128,6 +130,7 @@ css_link.addEventListener("click", () => {
 javascriptlink.addEventListener("click", () => {
     questions = javascript_questions;
     current_quiz = 3;
+    current_quiz_name = "JavaScript";
     runQuiz();
 })
 
@@ -168,7 +171,7 @@ function runQuiz() {
 
 // personalize the start message accordingly with the current quiz
 function personalizeStartQuizMessage() {
-    // 1=html, 2=css, 3=js
+    // 1 = html, 2 = css, 3 = js
     switch (current_quiz) {
         case 1:
             quiz_start_message.innerText = "Ready to start your HTML quiz?";
@@ -188,6 +191,7 @@ function personalizeStartQuizMessage() {
 htmlLink.addEventListener("click", () => {
     questions = html_questions;
     current_quiz = 1;
+    current_quiz_name = "HTML";
     runQuiz();
 })
 
@@ -209,6 +213,7 @@ button_next.addEventListener("click", changeQuestion);
 
 // populate the quiz box with the first question from the current quiz
 function startQuiz() {
+    // clearInterval(intervalID);
     question.innerText = questions[0].question;
     button_1.innerText = questions[0].answers[0];
     button_2.innerText = questions[0].answers[1];
@@ -218,6 +223,9 @@ function startQuiz() {
     // set the index of the current question, and display it
     currentQuestionIndex = 0;
     question_no.innerText = "Question:  " + (currentQuestionIndex + 1) + "/" + questions.length;
+
+    // set the name of the quiz
+    $("#quiz-name").text("The " + current_quiz_name + " quiz");
 }
 
 // change the background of the selected answer(button) and makes the rest unselected
@@ -289,7 +297,7 @@ function changeQuestion() {
         }
 
         // verify if the correct answer is the one selected and count the right answers
-        // match correct answer with the button id number, and verify if it is selected by user
+        // match correct answer number with the button id number, and verify if the button is selected by user
         switch (questions[currentQuestionIndex].correct_answer.toString()) {
             // the number of the answer is at the end of the buttons id
             case button_1.id.substring(7):
@@ -392,7 +400,10 @@ display_answers.addEventListener("click", displayAnswers);
 const restart_from_report_button = document.getElementById("button-restart-from-report");
 restart_from_report_button.addEventListener("click", restartQuiz);
 
-// display questions and answers for current quiz
+
+/**
+ * Display questions and answers for current quiz
+ */
 function displayAnswers() {
     // hide end quiz box and display Q&A results box
     quiz_end_box.classList.add("hide");
@@ -406,69 +417,92 @@ function displayAnswers() {
         // append the question withe its number
         $(".questions-answers").append("<h3 class=\"report-question\">" + (i + 1) + ". " + questions[i].question + "</h3>");
 
-        // append each answer and if it is the correct one, turn it green
-        // if the user choosed the wrong one, make that answer red
-        // if the answer is not selected by user and wrong, make it normal 
-
-        // if the correct answer is 1
-        if (questions[i].correct_answer === 1) {
-            // if the answer is the right one, make it green
-            $(".questions-answers").append(
-                "<p class=\"report green\">" + questions[i].answers[0] + " </p> ");
-        } else {
-            // if the answer is not right, but the user choose it, make it red
-            if (user_answers[i] === 1) {
+        // go through the 4 answers of the question and append them in order and with the right color color
+        // red - answer is selected and wrong
+        // green - answer selected and right
+        // pink - answer was not selected
+        for (let j = 1; j < 5; j++) {
+            // check if the current answer is the right one - display it green
+            // it and may or may not be selected by the user
+            if (j === questions[i].correct_answer) {
                 $(".questions-answers").append(
-                    "<p class=\"report red\">" + questions[i].answers[0] + " </p> ");
-            } else {
-                // if the answer is not right and the user did not choose it, display it plain
+                    "<p class=\"report green\">" + questions[i].answers[j - 1] + " </p> ");
+            }
+            // check if the current quiestion's correct answer is not the user answer 
+            if (questions[i].correct_answer != user_answers[i]) {
+                // for the current question the current answer is selected by the user - display it red
+                if (j === user_answers[i]) {
+                    $(".questions-answers").append(
+                        "<p class=\"report red\">" + questions[i].answers[j - 1] + " </p> ");
+                }
+            }
+            // check if the current answer is not the user's choice, nor the right one - display it pink
+            if (j != user_answers[i] && j != questions[i].correct_answer) {
                 $(".questions-answers").append(
-                    "<p class=\"report\">" + questions[i].answers[0] + " </p> ");
+                    "<p class=\"report\">" + questions[i].answers[j - 1] + " </p> ");
             }
         }
 
-        // if the correct answer is 2
-        if (questions[i].correct_answer === 2) {
-            $(".questions-answers").append(
-                "<p class=\"report green\">" + questions[i].answers[1] + " </p> ");
-        } else {
-            if (user_answers[i] === 2) {
-                $(".questions-answers").append(
-                    "<p class=\"report red\">" + questions[i].answers[1] + " </p> ");
-            } else {
-                $(".questions-answers").append(
-                    "<p class=\"report\">" + questions[i].answers[1] + " </p> ");
-            }
-        }
+        // // if the correct answer is 1
+        // if (questions[i].correct_answer === 1) {
+        //     // if the answer is the right one, make it green
+        //     $(".questions-answers").append(
+        //         "<p class=\"report green\">" + questions[i].answers[0] + " </p> ");
+        // } else {
+        //     // if the answer is not right, but the user choose it, make it red
+        //     if (user_answers[i] === 1) {
+        //         $(".questions-answers").append(
+        //             "<p class=\"report red\">" + questions[i].answers[0] + " </p> ");
+        //     } else {
+        //         // if the answer is not right and the user did not choose it, display it plain
+        //         $(".questions-answers").append(
+        //             "<p class=\"report\">" + questions[i].answers[0] + " </p> ");
+        //     }
+        // }
 
-        // if the correct answer is 3
-        if (questions[i].correct_answer === 3) {
-            $(".questions-answers").append(
-                "<p class=\"report green\">" + questions[i].answers[2] + " </p> ");
-        } else {
-            if (user_answers[i] === 3) {
-                $(".questions-answers").append(
-                    "<p class=\"report red\">" + questions[i].answers[2] + " </p> ");
-            } else {
-                $(".questions-answers").append(
-                    "<p class=\"report\">" + questions[i].answers[2] + " </p> ");
-            }
-        }
 
-        // if the correct answer is 4
-        if (questions[i].correct_answer === 4) {
-            $(".questions-answers").append(
-                "<p class=\"report green\">" + questions[i].answers[3] + " </p> ");
-        } else {
-            if (user_answers[i] === 4) {
-                $(".questions-answers").append(
-                    "<p class=\"report red\">" + questions[i].answers[3] + " </p> ");
-            } else {
-                $(".questions-answers").append(
-                    "<p class=\"report\">" + questions[i].answers[3] + " </p> ");
-            }
+        // // if the correct answer is 2
+        // if (questions[i].correct_answer === 2) {
+        //     $(".questions-answers").append(
+        //         "<p class=\"report green\">" + questions[i].answers[1] + " </p> ");
+        // } else {
+        //     if (user_answers[i] === 2) {
+        //         $(".questions-answers").append(
+        //             "<p class=\"report red\">" + questions[i].answers[1] + " </p> ");
+        //     } else {
+        //         $(".questions-answers").append(
+        //             "<p class=\"report\">" + questions[i].answers[1] + " </p> ");
+        //     }
+        // }
 
-        }
+        // // if the correct answer is 3
+        // if (questions[i].correct_answer === 3) {
+        //     $(".questions-answers").append(
+        //         "<p class=\"report green\">" + questions[i].answers[2] + " </p> ");
+        // } else {
+        //     if (user_answers[i] === 3) {
+        //         $(".questions-answers").append(
+        //             "<p class=\"report red\">" + questions[i].answers[2] + " </p> ");
+        //     } else {
+        //         $(".questions-answers").append(
+        //             "<p class=\"report\">" + questions[i].answers[2] + " </p> ");
+        //     }
+        // }
+
+        // // if the correct answer is 4
+        // if (questions[i].correct_answer === 4) {
+        //     $(".questions-answers").append(
+        //         "<p class=\"report green\">" + questions[i].answers[3] + " </p> ");
+        // } else {
+        //     if (user_answers[i] === 4) {
+        //         $(".questions-answers").append(
+        //             "<p class=\"report red\">" + questions[i].answers[3] + " </p> ");
+        //     } else {
+        //         $(".questions-answers").append(
+        //             "<p class=\"report\">" + questions[i].answers[3] + " </p> ");
+        //     }
+
+        // }
 
         // after each question which is not the last one, display a separation line
         if (i < questions.length - 1) {
@@ -494,13 +528,17 @@ function changeTextVisibility() {
     }
 }
 
+// text to be animated in the welcome area
 let finalMessage = "Take a quiz now!";
 let message = "";
 let currentMessageIndex = 0;
 // addLetter();
 
-setInterval(addLetter, 300);
+const intervalID = setInterval(addLetter, 300);
 
+/**
+ * Make animation for welcome area text by displaying it letter by letter.
+ */
 function addLetter() {
     if (message.length === finalMessage.length) {
         message = "T";

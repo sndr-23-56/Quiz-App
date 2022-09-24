@@ -108,6 +108,13 @@ h2 {
     text-align: center;
 }
 
+#quiz-name {
+    color: rgb(79, 79, 79);
+    border-bottom: 4px solid #FFCCD2;
+    margin-top: 1.5em;
+    padding: 0.2em;
+}
+
 .quiz {
     border: 6px solid #FFCCD2;
     /* #FFCCD2 */
