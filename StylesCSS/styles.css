@@ -27,8 +27,12 @@ h2 {
 }
 
 .brand {
-    color: #685454;
+    color: black;
+    /* border: 3px solid #FFCCD2; */
+    /* border-right: 3px solid #FFCCD2; */
+    /* border-radius: 7px; */
     margin: auto 1em;
+    /* padding: 0.5em; */
 }
 
 .navigation-bar {
@@ -41,7 +45,7 @@ h2 {
 
 .navbar-item {
     border: 1px solid #FFEDED;
-    padding-left: 1em;
+    margin-left: 1em;
 }
 
 .navbar-item:hover {

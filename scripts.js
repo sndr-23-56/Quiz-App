@@ -63,7 +63,7 @@ copyCSSJsonData();
 copyJavascriptJSONData();
 
 function copyHTMLJsonData() {
-    // copy data from JSON
+    // extract data from thr HTML JSON
     fetch("jsonData/HTMLquestions.json") // fetch(url) ---- for json file on the same level
         .then(res => res.json())
         .then(data => {
@@ -76,7 +76,7 @@ function copyHTMLJsonData() {
 }
 
 function copyCSSJsonData() {
-    // copy data from JSON
+    // extract data from the CSS JSON
     fetch("jsonData/cssQuestions.json") // fetch(url) ---- for json file on the same level
         .then(res => res.json())
         .then(data => {
@@ -89,7 +89,7 @@ function copyCSSJsonData() {
 }
 
 function copyJavascriptJSONData() {
-    // copy data from JSON
+    // extract data from the Javascript JSON
     fetch("jsonData/javascriptQuestions.json") // fetch(url) ---- for json file on the same level
         .then(res => res.json())
         .then(data => {
@@ -165,11 +165,12 @@ function runQuiz() {
             personalizeStartQuizMessage();
             quiz_start_div.classList.remove("hide");
         }
-
     }
 }
 
-// personalize the start message accordingly with the current quiz
+/**
+ * Personalize the start message accordingly to the current quiz.
+ */
 function personalizeStartQuizMessage() {
     // 1 = html, 2 = css, 3 = js
     switch (current_quiz) {
@@ -211,7 +212,9 @@ button_4.addEventListener("click", changeColorOnSelection);
 const button_next = document.getElementById("button_next");
 button_next.addEventListener("click", changeQuestion);
 
-// populate the quiz box with the first question from the current quiz
+/**
+ * Populate the quiz box with the first question from the current quiz.
+ */
 function startQuiz() {
     // clearInterval(intervalID);
     question.innerText = questions[0].question;
@@ -228,9 +231,13 @@ function startQuiz() {
     $("#quiz-name").text("The " + current_quiz_name + " quiz");
 }
 
-// change the background of the selected answer(button) and makes the rest unselected
+// 
+/**
+ * Change the background of the selected answer(button) and make the other answers unselected.
+ * @param {*} event the event that triggered/called this function (an button which contains an answer)
+ */
 function changeColorOnSelection(event) {
-    // selects only the button from which the event was triggered and deselects the rest
+    // select (change color) only the button from which the event was triggered and deselects the rest
     switch (event.target.id) {
         case "answer_1":
             button_1.classList.add("selected-answer");
@@ -260,7 +267,9 @@ function changeColorOnSelection(event) {
     // console.log(event.target.id);
 }
 
-// make all buttons with question answers unselected
+/**
+ * Make all the buttons with question answers unselected by removing the selection class.
+ */
 function deselectAllAnswers() {
     button_1.classList.remove("selected-answer");
     button_2.classList.remove("selected-answer");
@@ -268,65 +277,23 @@ function deselectAllAnswers() {
     button_4.classList.remove("selected-answer");
 }
 
-// move to the next question in the current quiz
+/**
+ * Move to the next question in the current quiz and save the user progress.
+ * 
+ * Save the user answer and the correct answer for current question .
+ * Update the quiz area with the correct text.
+ * Display quiz end box if there are no questions left.
+ */
 function changeQuestion() {
     //check if an answer is selected, if not, do not change the question
     if (button_1.classList.contains("selected-answer") || button_2.classList.contains("selected-answer") ||
         button_3.classList.contains("selected-answer") || button_4.classList.contains("selected-answer")) {
 
-        // record the user answers in an array for the quiz report
-        switch (true) {
-            // verify which answer is selected
-            case button_1.classList.contains("selected-answer"):
-                // console.log("ANSWER GIVEN: " + button_1.id.substring(7));
-                // record user answer
-                user_answers.push(1);
-                break;
-            case button_2.classList.contains("selected-answer"):
-                // record user answer
-                user_answers.push(2);
-                break;
-            case button_3.classList.contains("selected-answer"):
-                // record user answer
-                user_answers.push(3);
-                break;
-            case button_4.classList.contains("selected-answer"):
-                // record user answer
-                user_answers.push(4);
-                break;
-        }
+        // record the user current answer in an array for the quiz report
+        recordUserAnswer();
 
-        // verify if the correct answer is the one selected and count the right answers
-        // match correct answer number with the button id number, and verify if the button is selected by user
-        switch (questions[currentQuestionIndex].correct_answer.toString()) {
-            // the number of the answer is at the end of the buttons id
-            case button_1.id.substring(7):
-                if (button_1.classList.contains("selected-answer")) {
-                    // count answer as RIGHT 
-                    right_answers++;
-                }
-                break;
-            case button_2.id.substring(7):
-                if (button_2.classList.contains("selected-answer")) {
-                    // count answer as RIGHT
-                    right_answers++;
-                }
-                break;
-            case button_3.id.substring(7):
-                if (button_3.classList.contains("selected-answer")) {
-                    // count answer as RIGHT
-                    right_answers++;
-                }
-                break;
-            case button_4.id.substring(7):
-                if (button_4.classList.contains("selected-answer")) {
-                    // count answer as RIGHT
-                    right_answers++;
-                }
-                break;
-            default:
-                console.log("NO BUTTON SELECTED");
-        }
+        // for the current question verify if the correct answer is the one selected and count it as right using a variable
+        recordCorrectAnswer();
 
         // if there are any questions left, populate quiz with the next question
         if (currentQuestionIndex + 1 < questions.length) {
@@ -369,6 +336,67 @@ function changeQuestion() {
             deselectAllAnswers();
         }
 
+    }
+}
+
+/**
+ * Save the user answer to the current question in an array.
+ */
+function recordUserAnswer() {
+    switch (true) {
+        // verify which answer is selected (1, 2, 3 or 4)
+        case button_1.classList.contains("selected-answer"):
+            // record user answer index
+            user_answers.push(1);
+            break;
+        case button_2.classList.contains("selected-answer"):
+            // record user answer index
+            user_answers.push(2);
+            break;
+        case button_3.classList.contains("selected-answer"):
+            // record user answer index
+            user_answers.push(3);
+            break;
+        case button_4.classList.contains("selected-answer"):
+            // record user answer index
+            user_answers.push(4);
+            break;
+    }
+}
+
+/**
+ * Check if the user answer to the current question is correct and count it as right.
+ */
+function recordCorrectAnswer() {
+    // match correct answer number with one of the button id numbers, and verify if the button is selected by user
+    switch (questions[currentQuestionIndex].correct_answer.toString()) {
+        // the number of the answer is at the end of the buttons id
+        case button_1.id.substring(7):
+            if (button_1.classList.contains("selected-answer")) {
+                // count answer as RIGHT 
+                right_answers++;
+            }
+            break;
+        case button_2.id.substring(7):
+            if (button_2.classList.contains("selected-answer")) {
+                // count answer as RIGHT
+                right_answers++;
+            }
+            break;
+        case button_3.id.substring(7):
+            if (button_3.classList.contains("selected-answer")) {
+                // count answer as RIGHT
+                right_answers++;
+            }
+            break;
+        case button_4.id.substring(7):
+            if (button_4.classList.contains("selected-answer")) {
+                // count answer as RIGHT
+                right_answers++;
+            }
+            break;
+        default:
+            console.log("NO BUTTON SELECTED");
     }
 }
 
@@ -442,68 +470,6 @@ function displayAnswers() {
                     "<p class=\"report\">" + questions[i].answers[j - 1] + " </p> ");
             }
         }
-
-        // // if the correct answer is 1
-        // if (questions[i].correct_answer === 1) {
-        //     // if the answer is the right one, make it green
-        //     $(".questions-answers").append(
-        //         "<p class=\"report green\">" + questions[i].answers[0] + " </p> ");
-        // } else {
-        //     // if the answer is not right, but the user choose it, make it red
-        //     if (user_answers[i] === 1) {
-        //         $(".questions-answers").append(
-        //             "<p class=\"report red\">" + questions[i].answers[0] + " </p> ");
-        //     } else {
-        //         // if the answer is not right and the user did not choose it, display it plain
-        //         $(".questions-answers").append(
-        //             "<p class=\"report\">" + questions[i].answers[0] + " </p> ");
-        //     }
-        // }
-
-
-        // // if the correct answer is 2
-        // if (questions[i].correct_answer === 2) {
-        //     $(".questions-answers").append(
-        //         "<p class=\"report green\">" + questions[i].answers[1] + " </p> ");
-        // } else {
-        //     if (user_answers[i] === 2) {
-        //         $(".questions-answers").append(
-        //             "<p class=\"report red\">" + questions[i].answers[1] + " </p> ");
-        //     } else {
-        //         $(".questions-answers").append(
-        //             "<p class=\"report\">" + questions[i].answers[1] + " </p> ");
-        //     }
-        // }
-
-        // // if the correct answer is 3
-        // if (questions[i].correct_answer === 3) {
-        //     $(".questions-answers").append(
-        //         "<p class=\"report green\">" + questions[i].answers[2] + " </p> ");
-        // } else {
-        //     if (user_answers[i] === 3) {
-        //         $(".questions-answers").append(
-        //             "<p class=\"report red\">" + questions[i].answers[2] + " </p> ");
-        //     } else {
-        //         $(".questions-answers").append(
-        //             "<p class=\"report\">" + questions[i].answers[2] + " </p> ");
-        //     }
-        // }
-
-        // // if the correct answer is 4
-        // if (questions[i].correct_answer === 4) {
-        //     $(".questions-answers").append(
-        //         "<p class=\"report green\">" + questions[i].answers[3] + " </p> ");
-        // } else {
-        //     if (user_answers[i] === 4) {
-        //         $(".questions-answers").append(
-        //             "<p class=\"report red\">" + questions[i].answers[3] + " </p> ");
-        //     } else {
-        //         $(".questions-answers").append(
-        //             "<p class=\"report\">" + questions[i].answers[3] + " </p> ");
-        //     }
-
-        // }
-
         // after each question which is not the last one, display a separation line
         if (i < questions.length - 1) {
             $(".questions-answers").append("<hr>");
@@ -511,22 +477,7 @@ function displayAnswers() {
     }
 }
 
-
 const welcome_text = document.getElementById("welcome-area-txt");
-// setInterval(changeTextVisibility, 1000);
-
-function changeTextVisibility() {
-    if (welcome_text.classList.contains("visible")) {
-        welcome_text.classList.remove("visible");
-        welcome_text.classList.add("partially-visible");
-    } else if (welcome_text.classList.contains("partially-visible")) {
-        welcome_text.classList.remove("partially-visible");
-        welcome_text.classList.add("hidden");
-    } else if (welcome_text.classList.contains("hidden")) {
-        welcome_text.classList.remove("hidden");
-        welcome_text.classList.add("visible");
-    }
-}
 
 // text to be animated in the welcome area
 let finalMessage = "Take a quiz now!";
