@@ -4,33 +4,48 @@
         "correct_answer": 1
     },
     {
-        "question": "What does CSS stand for?",
-        "answers": ["CSS", "four four fourv four four four four four four four fourfourv vfourfourfo urfourv", "Cascading Style Sheets", "Hyperlinks Markup Language"],
+        "question": "Which of the following is not a HTML element?",
+        "answers": ["<div>", "<p>", "<image>", "<aside>"],
         "correct_answer": 3
     },
     {
-        "question": "What is 2*8?",
-        "answers": ["166", "12", "16", "32"],
-        "correct_answer": 3
+        "question": "Select the correct way to create a HTML hyperlink?",
+        "answers": ["<a> link=\"https://www.google.com/\" </a>", "<a> href=\"https://www.google.com/\" </a>", "<a> href=https://www.google.com/ </a>", "<a href=\"https://www.google.com/\"> </a>"],
+        "correct_answer": 4
     },
     {
-        "question": "What is 2+3?",
-        "answers": ["5", "6", "7", "8"],
+        "question": "Which sentence is true?",
+        "answers": ["The head part of the HTML document is not displayed in the web browser.", "The head part of an HTML document cannot contain an <title> element.", "The <title> element is never used within the page <head> block.", "The head part of the HTML document is always displayed in the web browser."],
         "correct_answer": 1
     },
     {
-        "question": "What is 3+3?",
-        "answers": ["5", "6", "7", "8"],
+        "question": "Select the false affirmation about an HTML <div> element.",
+        "answers": ["The <div> element is a container used for flow control.", "A <div> element cannot be used without some CSS styling.", "An <div> container can have multiple <div> elements within it.", "A <div> element can have multiple classes."],
         "correct_answer": 2
     },
     {
-        "question": "What is 4+3?",
-        "answers": ["5", "6", "7", "8"],
+        "question": "Select the true statement.",
+        "answers": ["An error does not occur when the \"src\" attribute of an image is null.", "The \"src\" attribute of an <img> element holds the description of the image.", "The \"alt\" attribute of a <img> element is not mandatory.", "The height of an image must always be specifyed in order to load an image."],
         "correct_answer": 3
     },
     {
-        "question": "What is 5+3?",
-        "answers": ["5", "6", "7", "8"],
+        "question": "Which is the correct way to create an unordered list with one element?",
+        "answers": ["<ul> <li>A single element</li> <ol>", "<ol> <li>A single element</li> </ol>", "<ul> <li>A single element</ul></li>", "<ul> <li>A single element</li> </ul>"],
         "correct_answer": 4
+    },
+    {
+        "question": "Which of the following is not a valid <input> element?",
+        "answers": ["<input type=\"button\"value=\"An button\">", "<input type=\"email\" size=\"30\" required>", "<input type=\"telephone\" pattern=\"[0-9]{3}-[0-9]{3}-[0-9]{4}\"required>", " <div><input type=\"checkbox\"checked> </div>"],
+        "correct_answer": 3
+    },
+    {
+        "question": "The largest HTML heading is:",
+        "answers": ["<heading1>", "<h6>", "<h1>", "<heading6>"],
+        "correct_answer": 3
+    },
+    {
+        "question": "The correct inline styling for an <div> element is which has an black background color is:",
+        "answers": ["<div style=\"color: black;\"></div>", "<div style:\"background-color: black;\"></div", "<div style=\"background-color: black;\"></div>", "<div style={background-color: black;}></div>"],
+        "correct_answer": 3
     }
 ]

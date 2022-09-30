@@ -443,7 +443,7 @@ function displayAnswers() {
     // using jQuery, move through all the quiz questions and append them to the report as headings and paragraphs
     for (let i = 0; i < questions.length; i++) {
         // append the question withe its number
-        $(".questions-answers").append("<h3 class=\"report-question\">" + (i + 1) + ". " + questions[i].question + "</h3>");
+        $(".questions-answers").append("<h3 class=\"report-question\">" + (i + 1) + ". " + escapeSpecialCharacters(questions[i].question) + "</h3>");
 
         // go through the 4 answers of the question and append them in order and with the right color color
         // red - answer is selected and wrong
@@ -454,20 +454,20 @@ function displayAnswers() {
             // it and may or may not be selected by the user
             if (j === questions[i].correct_answer) {
                 $(".questions-answers").append(
-                    "<p class=\"report green\">" + questions[i].answers[j - 1] + " </p> ");
+                    "<p class=\"report green\">" + escapeSpecialCharacters(questions[i].answers[j - 1]) + " </p> ");
             }
             // check if the current quiestion's correct answer is not the user answer 
             if (questions[i].correct_answer != user_answers[i]) {
                 // for the current question the current answer is selected by the user - display it red
                 if (j === user_answers[i]) {
                     $(".questions-answers").append(
-                        "<p class=\"report red\">" + questions[i].answers[j - 1] + " </p> ");
+                        "<p class=\"report red\">" + escapeSpecialCharacters(questions[i].answers[j - 1]) + " </p> ");
                 }
             }
             // check if the current answer is not the user's choice, nor the right one - display it pink
             if (j != user_answers[i] && j != questions[i].correct_answer) {
                 $(".questions-answers").append(
-                    "<p class=\"report\">" + questions[i].answers[j - 1] + " </p> ");
+                    "<p class=\"report\">" + escapeSpecialCharacters(questions[i].answers[j - 1]) + " </p> ");
             }
         }
         // after each question which is not the last one, display a separation line
@@ -475,6 +475,25 @@ function displayAnswers() {
             $(".questions-answers").append("<hr>");
         }
     }
+}
+
+/**
+ * Transform a string by escaping some of the special characters in it.
+ * @param {String} text the string which may contain some special characters which need to be displayed 
+ * @returns a String with special characterd escaped
+ */
+function escapeSpecialCharacters(text = "") {
+    let transformedText = "";
+    for (let letterPosition = 0; letterPosition < text.length; letterPosition++) {
+        if (text[letterPosition] === "<") {
+            transformedText = transformedText + "&lt;";
+        } else if (text[letterPosition] === ">") {
+            transformedText = transformedText + "&gt;";
+        } else {
+            transformedText = transformedText + text[letterPosition];
+        }
+    }
+    return transformedText;
 }
 
 const welcome_text = document.getElementById("welcome-area-txt");
@@ -485,7 +504,7 @@ let message = "";
 let currentMessageIndex = 0;
 // addLetter();
 
-const intervalID = setInterval(addLetter, 300);
+// const intervalID = setInterval(addLetter, 300);
 
 /**
  * Make animation for welcome area text by displaying it letter by letter.
