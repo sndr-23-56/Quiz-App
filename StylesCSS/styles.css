@@ -1,21 +1,27 @@
+/* 
+    *  STYLES LIST
+    *   
+    *  I - GENERAL STYLES
+    * II - NAVIGATION BAR
+    * III - WELCOME AREA OF THE PAGE
+    * IV - ABOUT BOX WITH QUIZ INFORMATIONS   
+    * V - QUIZ START AND END BOX
+    * VI - QUIZ BOX
+    * VII - QUIZ WARNING BOX ON EXIT
+    * VIII - QUIZ REPORT BOX
+    * IX - VISIBILITY ANIMATION STAGES
+*/
+
+
+/****** I - GENERAL STYLES ******/
+
 body {
-    /* align-items: center;
-    display: flex;
-    justify-content: center; */
     margin: 0px;
     padding: 0px;
     overflow-x: hidden;
     font-family: 'Montserrat', sans-serif;
-    /* background-color: #fdf6f6;  */
     background-color: #fff3f3;
-    /* background-color: #FFEDED; */
 }
-
-
-/*  margin: 0px;
-    padding: 0px;
-    overflow-x: hidden;
- */
 
 h1 {
     font-weight: bold;
@@ -26,13 +32,12 @@ h2 {
     margin-bottom: 1em;
 }
 
+
+/****** II - NAVIGATION BAR ******/
+
 .brand {
     color: black;
-    /* border: 3px solid #FFCCD2; */
-    /* border-right: 3px solid #FFCCD2; */
-    /* border-radius: 7px; */
     margin: auto 1em;
-    /* padding: 0.5em; */
 }
 
 .navigation-bar {
@@ -60,6 +65,9 @@ h2 {
     margin-right: 0.5em;
 }
 
+
+/****** III - WELCOME AREA OF THE PAGE ******/
+
 .welcome-area {
     padding: 2em;
 }
@@ -74,7 +82,7 @@ h2 {
 .welcome-area-animated-txt {
     font-weight: bold;
     text-align: center;
-    font-size: 3em;
+    font-size: 4em;
 }
 
 .home {
@@ -83,6 +91,9 @@ h2 {
     margin: 2em auto;
     /* margin: 4em 2.5em; */
 }
+
+
+/****** IV - ABOUT BOX WITH QUIZ INFORMATIONS ******/
 
 .about {
     background-color: #FFEDED;
@@ -94,6 +105,9 @@ h2 {
     /* margin: 4em 2.5em; */
     text-align: left;
 }
+
+
+/****** V - QUIZ START AND END BOX ******/
 
 .quiz-start-end {
     background-color: #FFEDED;
@@ -111,6 +125,27 @@ h2 {
     font-weight: bold;
     text-align: center;
 }
+
+.btn_end_quiz {
+    background-color: #EA8A8A;
+    /* deschis #eb9b6c */
+    border: 2px solid #cb6e39;
+    border-radius: 7px;
+    color: white;
+    font-weight: bold;
+    margin: 2em auto 1.5em;
+    min-width: 80px;
+    padding: 0.3em;
+    width: 20%;
+    text-align: center;
+}
+
+.btn_end_quiz:hover {
+    background-color: #685454;
+}
+
+
+/****** VI - QUIZ BOX ******/
 
 #quiz-name {
     color: rgb(79, 79, 79);
@@ -196,6 +231,18 @@ h2 {
     text-align: center;
 }
 
+.btn_next:hover {
+    background-color: #685454;
+    /* #cb6e39; */
+}
+
+.next {
+    text-align: center;
+}
+
+
+/****** VII - QUIZ WARNING BOX ON EXIT ******/
+
 .btn_warning_box {
     background-color: #EA8A8A;
     /* deschis #eb9b6c */
@@ -214,31 +261,8 @@ h2 {
     background-color: #685454;
 }
 
-.btn_next:hover {
-    background-color: #685454;
-    /* #cb6e39; */
-}
 
-.btn_end_quiz {
-    background-color: #EA8A8A;
-    /* deschis #eb9b6c */
-    border: 2px solid #cb6e39;
-    border-radius: 7px;
-    color: white;
-    font-weight: bold;
-    margin: 2em auto 1.5em;
-    min-width: 80px;
-    padding: 0.3em;
-    width: 20%;
-    text-align: center;
-}
-
-.btn_end_quiz:hover {
-    background-color: #685454;
-}
-
-
-/* end quiz report*/
+/****** VIII - QUIZ REPORT BOX ******/
 
 .questions-answers {
     text-align: left;
@@ -299,23 +323,25 @@ hr {
     background-color: #685454;
 }
 
-.next {
-    text-align: center;
-}
-
 .hide {
     display: none;
 }
 
+
+/****** IX - VISIBILITY ANIMATION STAGES ******/
+
 .visible {
     opacity: 1;
+    color: #ec7373;
 }
 
 .partially-visible {
-    opacity: 0.8;
+    opacity: 0.7;
     /* background-color: #F5FEC0; */
+    color: #ec7373;
 }
 
 .hidden {
     opacity: 0.4;
+    color: #ec7373;
 }

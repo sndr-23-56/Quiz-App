@@ -1,8 +1,7 @@
-const url = 'questions.json';
-// link the heading for the question to a constant
+// the heading for the question to a constant
 const question = document.getElementById("question_text");
 
-// link the buttons for the answers to constants
+// the buttons for the answers to constants
 const button_1 = document.getElementById("answer_1");
 const button_2 = document.getElementById("answer_2");
 const button_3 = document.getElementById("answer_3");
@@ -11,6 +10,7 @@ const button_4 = document.getElementById("answer_4");
 // the heading which displays the question count
 const question_no = document.getElementById("question-count");
 
+// the right answer count text and personalized message
 const right_answers_text = document.getElementById("right-answers");
 const right_answers_message = document.getElementById("end-quiz-message");
 let right_answers = 0;
@@ -424,7 +424,7 @@ function restartQuiz() {
 const display_answers = document.getElementById("button_answers");
 display_answers.addEventListener("click", displayAnswers);
 
-//button for restarting quiz from report box
+// button for restarting quiz from report box
 const restart_from_report_button = document.getElementById("button-restart-from-report");
 restart_from_report_button.addEventListener("click", restartQuiz);
 
@@ -496,34 +496,64 @@ function escapeSpecialCharacters(text = "") {
     return transformedText;
 }
 
-const welcome_text = document.getElementById("welcome-area-txt");
-
 // text to be animated in the welcome area
+const welcome_text = document.getElementById("welcome-area-txt");
 let finalMessage = "Take a quiz now!";
 let message = "";
 let currentMessageIndex = 0;
-// addLetter();
 
-// const intervalID = setInterval(addLetter, 300);
-
+// variables used for setting letter and animation intervals
+let intervalID = setInterval(addLetter, 200);
+let intervalID2;
 /**
  * Make animation for welcome area text by displaying it letter by letter.
  */
 function addLetter() {
+    // if the message is complete, restart from the first letter
     if (message.length === finalMessage.length) {
         message = "T";
         currentMessageIndex = 1;
-        // console.log(message);
         welcome_text.innerText = message + "_";
     } else if (message.length < finalMessage.length) {
+        // if the message is not complete, add the next letter
         message = message + finalMessage[currentMessageIndex];
         currentMessageIndex++;
-        // console.log(message);
+        // the message is complete after adding the letter 
         if (message.length === finalMessage.length) {
+            // stop the letter adding animation and run the text visibility animation for 2 seconds
             welcome_text.innerText = message;
+            clearInterval(intervalID);
+            intervalID2 = setInterval(changeTextVisibility, 200);
+            welcome_text.classList.add("visible");
+            window.setTimeout(() => {
+                // after 2 seconds restart the letter adding animation and stop the visibility change one
+                clearInterval(intervalID2);
+                welcome_text.classList.remove("visible");
+                welcome_text.classList.remove("partially-visible");
+                welcome_text.classList.remove("hidden");
+                intervalID = setInterval(addLetter, 200);
+            }, 2000)
+
         } else {
+            // the message is not complete after adding the letter
             welcome_text.innerText = message + "_";
         }
+    }
+}
+
+/**
+ * Changes the welcome area animated text visibility and color accordingly to the current visibility state
+ */
+function changeTextVisibility() {
+    if (welcome_text.classList.contains("visible")) {
+        welcome_text.classList.remove("visible");
+        welcome_text.classList.add("partially-visible");
+    } else if (welcome_text.classList.contains("partially-visible")) {
+        welcome_text.classList.remove("partially-visible");
+        welcome_text.classList.add("hidden");
+    } else if (welcome_text.classList.contains("hidden")) {
+        welcome_text.classList.remove("hidden");
+        welcome_text.classList.add("visible");
     }
 }
 
