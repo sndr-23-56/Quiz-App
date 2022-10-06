@@ -1,21 +1,51 @@
 [{
-        "question": "What is 11+11?",
-        "answers": ["22", "4", "44", "444"],
+        "question": "How do you refer an external script called \"scripts\"?",
+        "answers": ["<script src=\"scripts.js\"></script>", "<script src={scripts.j}\"></script>", "<scr source=\"scripts.js\"></scr>", "<script source=\"scripts.js\"></script>"],
         "correct_answer": 1
     },
     {
-        "question": "What is 22+22?",
-        "answers": ["22", "44", "7", "77"],
+        "question": "What is JavScript used for?",
+        "answers": ["defining the structure structure of a web page and its content", "making web pages interactive", "style purposes", "define HTML elements"],
         "correct_answer": 2
     },
     {
-        "question": "What is 33+33?",
-        "answers": ["1", "0", "66", "666"],
+        "question": "Hou can JavaScript use HTML DOM to select an element with the id called \"profile\"?",
+        "answers": ["document.getElementById[\"profile\"]", "DOM.getElementById(profile)", "document.ElementId(\"profile\")", "document.getElementById(\"profile\")"],
+        "correct_answer": 4
+    },
+    {
+        "question": "What must a JavaScript function always return?",
+        "answers": ["a String", "1", "true", "An JavaScript function is not required to return something."],
+        "correct_answer": 4
+    },
+    {
+        "question": "How do you define a function which has a default value for its parameters?",
+        "answers": ["function multiply(a=1, b=1) {return a * b;}", "function multiply(a={1}; b={1}) {return a * b;}", "function multiply(a.default={1}, b.default={1}) {return a * b;}", "A function cannot have default values for its parameters."],
+        "correct_answer": 1
+    },
+    {
+        "question": "Which is the JavaScript strict equality operator?",
+        "answers": ["==", "=", "===", "!=="],
         "correct_answer": 3
     },
     {
-        "question": "What is 44+44?",
-        "answers": ["333", "3", "33", "88"],
+        "question": "How do you write single line comments in JavaScript?",
+        "answers": ["using // ", "using <!-- -->", "using {}", "using []"],
+        "correct_answer": 1
+    },
+    {
+        "question": "Select the wrong way to declare an JS variable.",
+        "answers": ["var nr = 4;", "const x = \"Carl\";", "let nr = 9;", "String name = \"Ann\";"],
         "correct_answer": 4
+    },
+    {
+        "question": "Select the correct syntax for the \"for\" loop in JS.",
+        "answers": ["for (let i := 0; i < 3; i++) {}", "for (let i = 0; i < 3; i++) {}", "for (let i == 0; i < 3; i++) {}", "for (int i = 0; i < 3; i++) {}"],
+        "correct_answer": 2
+    },
+    {
+        "question": "How do you define a JS array which consists of 3 numbers?",
+        "answers": ["let numberArray = [\"1\", \"2\", \"3\"];", "let numberArray := [1, 2, 3];", "let numberArray = [1, 2, 3];", "let numberArray = {1, 2, 3};"],
+        "correct_answer": 3
     }
 ]

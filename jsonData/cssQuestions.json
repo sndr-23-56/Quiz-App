@@ -1,21 +1,51 @@
 [{
-        "question": "What is 1+1?",
-        "answers": ["2", "4", "44", "444"],
+        "question": "Whis the correct way to use inline CSS to change an <h2> element color to blue?",
+        "answers": [" <h2 style=\"color: blue;\">A heading</h2>", "<h2 style=\"background-color: blue;\">A heading</h2>", "<h2 color=\"color: blue;\">A heading</h2>", "<h2 styles=\"color: blue\">A heading</h2>"],
         "correct_answer": 1
     },
     {
-        "question": "What is 2+2?",
-        "answers": ["22", "4", "7", "77"],
+        "question": "What does CSS stand for?",
+        "answers": ["Cascading Style Scripts", "Cascading Style Sheets", "Corresponding Style Sheets", "Cascading Story Sheets"],
         "correct_answer": 2
     },
     {
-        "question": "What is 3+3?",
-        "answers": ["1", "0", "6", "66"],
+        "question": "Where in the HTML file does the CSS reference go?",
+        "answers": ["at the top of the <body> section", "it doesn't need to be referenced", "in the <head> section", "at the bottom of the <body> section"],
         "correct_answer": 3
     },
     {
-        "question": "What is 4+4?",
-        "answers": ["333", "3", "33", "8"],
+        "question": "How do you set the margin of an element which has an class called \"description\" to 2px ?",
+        "answers": ["#description {margin: 2px;}", "description {margin: 2px;}", ".description {padding: 2px;}", ".description {margin: 2px;}"],
+        "correct_answer": 4
+    },
+    {
+        "question": "What is the wrong way to use the ID selector in a CSS file?",
+        "answers": ["#idName {border: 2px;}", "#idName {padding: 2px;}", "#idName {color: red;}", ".idName {color: red;}"],
+        "correct_answer": 4
+    },
+    {
+        "question": "How do you change the background of the web page to yellow?",
+        "answers": [".body {background-color: yellow;}", "body {background-color: yellow;}", "#body {background-color: yellow;}", "body {color: yellow;}"],
+        "correct_answer": 2
+    },
+    {
+        "question": "Select the property which does not belong to the CSS syntax.",
+        "answers": ["margins-top", "border", "font-size", "max-width"],
+        "correct_answer": 1
+    },
+    {
+        "question": "What is the purpose of the \"opacity\" CSS property?",
+        "answers": ["Specifies the transparency of an element.", "Is used to change the color of an element?", "Changes the color of the border.", "Sets the size of the border."],
+        "correct_answer": 1
+    },
+    {
+        "question": "How do you change the margin of all the <h5> elements to 4px?",
+        "answers": ["(h5) {margin: 4px;}", "#h5 {margin: 4px;}", "h5 {margin: 4px;}", ".h5 {margin: 4px;}"],
+        "correct_answer": 3
+    },
+    {
+        "question": "Select the CSS property which is used to change the text size.",
+        "answers": ["font-style", "font-weight", "size", "font-size"],
         "correct_answer": 4
     }
 ]
