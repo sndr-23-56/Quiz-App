@@ -445,7 +445,7 @@ function displayAnswers() {
         // append the question withe its number
         $(".questions-answers").append("<h3 class=\"report-question\">" + (i + 1) + ". " + escapeSpecialCharacters(questions[i].question) + "</h3>");
 
-        // go through the 4 answers of the question and append them in order and with the right color color
+        // go through the 4 answers of the question and append them in order and with the right color
         // red - answer is selected and wrong
         // green - answer selected and right
         // pink - answer was not selected
@@ -505,6 +505,7 @@ let currentMessageIndex = 0;
 // variables used for setting letter and animation intervals
 let intervalID = setInterval(addLetter, 200);
 let intervalID2;
+
 /**
  * Make animation for welcome area text by displaying it letter by letter.
  */
@@ -556,5 +557,3 @@ function changeTextVisibility() {
         welcome_text.classList.add("visible");
     }
 }
-
-// comment for ssh on github
