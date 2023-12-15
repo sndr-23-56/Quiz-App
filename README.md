@@ -2,7 +2,7 @@
 This is an responsive and accessible application made to test your basic knowledge in front-end web development. 
 With the use of Javascript, jQuery, local JSON files, Bootstrap, plain CSS and HTML this app provides an useful tool for practicing and learning.
 
-The quiz header and welcoming area
+The quiz header and welcome area
 ![PROJECT IMAGE 1](quiz2.PNG)
 
 Quiz appearance
