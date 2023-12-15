@@ -11,6 +11,9 @@ Quiz appearance
 The quiz report showing the answer green if the user was correct or red if the user chose the wrong one.
 ![PROJECT IMAGE 1](quiz3.PNG)
 
+Each quiz has the quiestions stored in a local JSON file that has the following structure:
+![PROJECT IMAGE 1](quiz4.PNG)
+
 **App description:**: 
 - The app contains a header with buttons for the about section and the three quizes available
 - Below it is the welcome area which contains a message and an animated text
